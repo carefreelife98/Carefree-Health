@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/?serverTimeZone=UTC&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://127.0.0.1:3306/carefree_health_test?serverTimeZone=UTC&characterEncoding=UTF-8&useSSL=false
     hikari:
       username: health_admin
       password: Health_admin1234!!

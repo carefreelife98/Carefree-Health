@@ -1,4 +1,4 @@
-package com.carefreelife.carefreehealth.core.dto
+package com.carefreelife.carefreehealth.core.dto.response
 
 enum class ResponseCode(val code: String, val message: String) {
     // Http status 200
