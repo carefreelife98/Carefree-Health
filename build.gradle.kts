@@ -36,8 +36,11 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
-	// 스웨거
+	// 스웨거 어노테이션
 	implementation("io.swagger.core.v3:swagger-annotations:2.2.23")
+	// Open API 3
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0")  // 최신 버전으로 변경 가능
+
 
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")

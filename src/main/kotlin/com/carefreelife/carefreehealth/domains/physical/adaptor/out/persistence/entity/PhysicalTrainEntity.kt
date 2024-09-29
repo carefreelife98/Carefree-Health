@@ -28,6 +28,6 @@ class PhysicalTrainEntity(
     val description: String = description.description
 
     @Column
-    @OneToMany(mappedBy = "physicalTrainEntity", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-    val tags: List<PhysicalTrainTagEntity> = emptyList()
+    @OneToMany(mappedBy = "physicalTrainEntity", cascade = [CascadeType.ALL], orphanRemoval = true, fetch = FetchType.LAZY)
+    val tags: List<PhysicalTrainTagEntity> = mutableListOf()
 }

@@ -11,3 +11,18 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+
+springdoc:
+  api-docs:
+    path: /carefree-api-docs
+    enabled: true
+  swagger-ui:
+    path: /carefree-swagger-ui.html
+    enabled: true
+    groups-order: asc
+    tags-sorter: alpha # alphabet 순 tag 정렬
+    operations-sorter: alpha # alphabet 순 tag 정렬
+    display-request-duration: true # API 호출 소요 시간 노출
+    disable-swagger-default-url: true
+  cache:
+    disabled: true

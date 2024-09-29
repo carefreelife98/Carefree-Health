@@ -48,7 +48,7 @@ class PhysicalTrainEntityMapper {
             )
         }
 
-        fun toTagDtoList(tagEntityList: List<PhysicalTrainTagEntity>): List<PhysicalTrainResponse.PhysicalTrainTagDto> {
+        private fun toTagDtoList(tagEntityList: List<PhysicalTrainTagEntity>): List<PhysicalTrainResponse.PhysicalTrainTagDto> {
             return tagEntityList.stream().map{ toTagDto(it) }.toList()
         }
     }
