@@ -1,32 +1,32 @@
 package com.carefreelife.carefreehealth.domains.physical.adaptor.out.persistence.mapper
 
 import com.carefreelife.carefreehealth.core.property.Description
-import com.carefreelife.carefreehealth.core.property.ExerciseId
 import com.carefreelife.carefreehealth.core.property.Title
 import com.carefreelife.carefreehealth.domains.physical.adaptor.out.persistence.entity.PhysicalTrainEntity
 import com.carefreelife.carefreehealth.domains.physical.adaptor.out.persistence.entity.PhysicalTrainTagEntity
-import com.carefreelife.carefreehealth.domains.physical.application.dto.response.PhysicalTrainResponse
-import com.carefreelife.carefreehealth.domains.physical.domain.`object`.PhysicalExercise
-import java.util.stream.Collectors
+import com.carefreelife.carefreehealth.domains.physical.application.dto.common.PhysicalTrainCommonDto
+import com.carefreelife.carefreehealth.domains.physical.application.dto.request.PhysicalTrainRequestDto
+import com.carefreelife.carefreehealth.domains.physical.application.dto.response.PhysicalTrainResponseDto
 
 class PhysicalTrainEntityMapper {
     companion object {
 
-        fun toEntity(physicalExercise: PhysicalExercise): PhysicalTrainEntity {
+        fun toEntity(physicalExercise: PhysicalTrainRequestDto): PhysicalTrainEntity {
             return PhysicalTrainEntity(
-                physicalExercise.exerciseId,
-                physicalExercise.title,
-                physicalExercise.description,
+                null,
+                Title(physicalExercise.title),
+                Description(physicalExercise.description),
                 physicalExercise.motion,
                 physicalExercise.effect,
                 physicalExercise.caution
             )
         }
 
-        fun toDTO(physicalTrainEntity: PhysicalTrainEntity?): PhysicalTrainResponse.PhysicalTrainResponseDto {
+        fun toDTO(physicalTrainEntity: PhysicalTrainEntity?): PhysicalTrainResponseDto {
             if (physicalTrainEntity != null) {
-                return PhysicalTrainResponse.PhysicalTrainResponseDto(
-                    exerciseId = physicalTrainEntity.exerciseId,
+                return PhysicalTrainResponseDto(
+                    // 이미 생성된 entity 를 DTO 로 변환하는 경우 AutoIncrement 에 의해 필수적으로 ID 가 생성된 상태임. (!!)
+                    exerciseId = physicalTrainEntity.exerciseId!!,
                     title = physicalTrainEntity.title,
                     description = physicalTrainEntity.description,
                     motion = physicalTrainEntity.motion,
@@ -41,14 +41,14 @@ class PhysicalTrainEntityMapper {
             throw NoSuchElementException("Exercise not found")
         }
 
-        private fun toTagDto(tagEntity: PhysicalTrainTagEntity): PhysicalTrainResponse.PhysicalTrainTagDto {
-            return PhysicalTrainResponse.PhysicalTrainTagDto(
+        private fun toTagDto(tagEntity: PhysicalTrainTagEntity): PhysicalTrainCommonDto.PhysicalTrainTagDto {
+            return PhysicalTrainCommonDto.PhysicalTrainTagDto(
                 tagCode = tagEntity.tagCode,
                 tagDescription = tagEntity.tagDescription
             )
         }
 
-        private fun toTagDtoList(tagEntityList: List<PhysicalTrainTagEntity>): List<PhysicalTrainResponse.PhysicalTrainTagDto> {
+        private fun toTagDtoList(tagEntityList: List<PhysicalTrainTagEntity>): List<PhysicalTrainCommonDto.PhysicalTrainTagDto> {
             return tagEntityList.stream().map{ toTagDto(it) }.toList()
         }
     }

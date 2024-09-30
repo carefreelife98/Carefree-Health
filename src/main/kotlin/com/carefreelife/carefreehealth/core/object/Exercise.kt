@@ -11,10 +11,10 @@ import java.time.ZonedDateTime
 @Getter
 @SuperBuilder
 open class Exercise<T> (
-    val exerciseId: ExerciseId,
+//    val exerciseId: ExerciseId,
     var title: Title,
     var description: Description,
-    var tags: List<T> = ExerciseTags<T>().emptyTags(),
-    var created: ZonedDateTime = ZonedDateTime.now(),
-    var updated: ZonedDateTime = ZonedDateTime.now()
+    var tags: List<T>? = ExerciseTags<T>().emptyTags(),
+    var created: ZonedDateTime? = ZonedDateTime.now(),
+    var updated: ZonedDateTime? = ZonedDateTime.now()
 )

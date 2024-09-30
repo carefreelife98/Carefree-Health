@@ -9,7 +9,7 @@ import jakarta.persistence.*
 @Entity
 @Table(name = "physical_train")
 class PhysicalTrainEntity(
-    exerciseId: ExerciseId,
+    exerciseId: ExerciseId?,
     title: Title,
     description: Description,
 
@@ -19,7 +19,7 @@ class PhysicalTrainEntity(
 ): CarefreeBaseEntity() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val exerciseId: Long = exerciseId.id
+    val exerciseId: Long? = exerciseId?.id
 
     @Column
     val title: String = title.title

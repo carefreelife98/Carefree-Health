@@ -1,5 +1,7 @@
 package com.carefreelife.carefreehealth.core.dto.response
 
+import com.carefreelife.carefreehealth.core.common.ResponseCode
+
 data class BaseCarefreeApiResponse<T>(
     val status: ResponseCode,
     val data: T? = null
