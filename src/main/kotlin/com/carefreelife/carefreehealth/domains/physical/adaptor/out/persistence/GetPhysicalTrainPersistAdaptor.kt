@@ -13,7 +13,8 @@ class GetPhysicalTrainPersistAdaptor(
 ): GetPhysicalTrainOutPort {
 
     override fun getPhysicalTrainDetailById(exerciseId: ExerciseId): PhysicalTrainResponseDto {
-        val result = physicalTrainRepository.findById(exerciseId.id)
-        return PhysicalTrainEntityMapper.toDTO(result.orElseThrow())
+        val physicalTrainEntity = physicalTrainRepository.findById(exerciseId.id).orElseThrow()
+        val result = PhysicalTrainEntityMapper.toDTO(physicalTrainEntity)
+        return result
     }
 }

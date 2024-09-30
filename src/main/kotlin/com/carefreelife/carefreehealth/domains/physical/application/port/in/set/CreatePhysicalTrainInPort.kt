@@ -4,6 +4,7 @@ import com.carefreelife.carefreehealth.domains.physical.application.dto.request.
 import com.carefreelife.carefreehealth.domains.physical.application.dto.response.PhysicalTrainResponseDto
 import com.carefreelife.carefreehealth.domains.physical.application.port.out.set.CreatePhysicalTrainOutPort
 import com.carefreelife.carefreehealth.domains.physical.application.usecases.set.CreatePhysicalTrainUseCase
+import com.carefreelife.carefreehealth.domains.physical.domain.common.PhysicalTrainTags
 import org.springframework.stereotype.Service
 
 @Service

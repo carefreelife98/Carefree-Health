@@ -6,7 +6,8 @@ import jakarta.persistence.*
 @Table(name = "physical_train_tag")
 class PhysicalTrainTagEntity(
     tagCode: String,
-    tagDescription: String
+    tagDescription: String,
+    targetEntity: PhysicalTrainEntity
 ) {
 
     @Id
@@ -21,5 +22,5 @@ class PhysicalTrainTagEntity(
 
     @ManyToOne
     @JoinColumn(name = "exercise_id", nullable = false)
-    val physicalTrainEntity: PhysicalTrainEntity? = null
+    val physicalTrainEntity: PhysicalTrainEntity = targetEntity
 }

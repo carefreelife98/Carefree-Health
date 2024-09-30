@@ -4,6 +4,7 @@ import com.carefreelife.carefreehealth.core.dto.response.BaseCarefreeApiResponse
 import com.carefreelife.carefreehealth.core.common.ResponseCode
 import com.carefreelife.carefreehealth.core.property.ExerciseId
 import com.carefreelife.carefreehealth.domains.physical.application.dto.response.PhysicalTrainResponseDto
+import com.carefreelife.carefreehealth.domains.physical.application.port.`in`.get.GetPhysicalTrainInPort
 import com.carefreelife.carefreehealth.domains.physical.application.usecases.get.GetPhysicalTrainUseCase
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.tags.Tag
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class PhysicalTrainGetApiAdaptor (
     private var getPhysicalTrainUseCase: GetPhysicalTrainUseCase,
+    private var getPhysicalTrainInPort: GetPhysicalTrainInPort
 ) {
 
     @GetMapping(path = ["/{exerciseId}"], produces = ["application/json"])
@@ -27,7 +29,7 @@ class PhysicalTrainGetApiAdaptor (
         @Valid @PathVariable("exerciseId") exerciseId: Long
     ): BaseCarefreeApiResponse<PhysicalTrainResponseDto> {
 
-        val response = getPhysicalTrainUseCase.getPhysicalTrainDetailById(ExerciseId(exerciseId))
+        val response = getPhysicalTrainInPort.getPhysicalTrainDetailById(ExerciseId(exerciseId))
         return BaseCarefreeApiResponse(ResponseCode.SUCCESS, response)
     }
 }
