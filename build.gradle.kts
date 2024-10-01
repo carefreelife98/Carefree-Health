@@ -6,6 +6,12 @@ plugins {
 	kotlin("plugin.jpa") version "1.9.25"
 }
 
+allOpen {
+	annotation("jakarta.persistence.Entity")
+	annotation("jakarta.persistence.Embeddable")
+	annotation("jakarta.persistence.MappedSuperclass")
+}
+
 group = "com.carefreelife"
 version = "0.0.1-SNAPSHOT"
 

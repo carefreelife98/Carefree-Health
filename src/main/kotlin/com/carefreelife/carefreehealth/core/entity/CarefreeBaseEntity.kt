@@ -15,8 +15,7 @@ open class CarefreeBaseEntity {
     @CreatedDate
     @Column(updatable = false)
     var created: ZonedDateTime = ZonedDateTime.now(ZoneId.of("Asia/Seoul"))
-        private set
+
     @LastModifiedDate
     var updated: ZonedDateTime = ZonedDateTime.now(ZoneId.of("Asia/Seoul"))
-        private set
 }

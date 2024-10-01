@@ -10,6 +10,7 @@ spring:
       password: Health_admin1234!!
   jpa:
     hibernate:
+      use_sql_comments: true
       ddl-auto: update
 
 springdoc:
