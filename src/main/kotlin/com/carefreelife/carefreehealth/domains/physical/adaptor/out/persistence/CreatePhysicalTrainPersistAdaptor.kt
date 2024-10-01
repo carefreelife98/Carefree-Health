@@ -4,10 +4,8 @@ import com.carefreelife.carefreehealth.domains.physical.adaptor.out.persistence.
 import com.carefreelife.carefreehealth.domains.physical.adaptor.out.persistence.mapper.PhysicalTrainEntityMapper
 import com.carefreelife.carefreehealth.domains.physical.adaptor.out.persistence.repository.PhysicalTrainRepository
 import com.carefreelife.carefreehealth.domains.physical.adaptor.out.persistence.repository.PhysicalTrainTagRepository
-import com.carefreelife.carefreehealth.domains.physical.application.dto.common.PhysicalTrainCommonDto
-import com.carefreelife.carefreehealth.domains.physical.application.dto.request.PhysicalTrainRequestDto
-import com.carefreelife.carefreehealth.domains.physical.application.dto.response.PhysicalTrainResponseDto
 import com.carefreelife.carefreehealth.domains.physical.application.port.out.set.CreatePhysicalTrainOutPort
+import com.carefreelife.carefreehealth.domains.physical.domain.`object`.PhysicalTrainExercise
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 import java.util.*
@@ -19,13 +17,16 @@ class CreatePhysicalTrainPersistAdaptor(
 ): CreatePhysicalTrainOutPort {
 
     @Transactional
-    override fun createPhysicalTrainDetail(physicalTrainRequestDto: PhysicalTrainRequestDto): Long {
+    override fun createPhysicalTrainDetail(physicalTrainExercise: PhysicalTrainExercise): Long {
+        if (Objects.isNull(physicalTrainExercise)) throw Exception("::: The physical train exercise is null :::")
 
-        val physicalTrainEntity = PhysicalTrainEntityMapper.toEntity(physicalTrainRequestDto)
+        val physicalTrainEntity = PhysicalTrainEntityMapper.toEntity(physicalTrainExercise)
         val result = physicalTrainRepository.save(physicalTrainEntity).exerciseId ?: throw Exception("Database Error Occurred !!")
 
-        if (!physicalTrainRequestDto.tags.isNullOrEmpty()) {
-            val tagEntityList: List<PhysicalTrainTagEntity> = PhysicalTrainEntityMapper.toTagEntityList(physicalTrainRequestDto.tags, physicalTrainEntity)
+        val tags = physicalTrainExercise.tags
+        if (tags.isNotEmpty()) {
+            val tagEntityList: List<PhysicalTrainTagEntity> =
+                PhysicalTrainEntityMapper.toTagEntityList(tags, physicalTrainEntity)
             physicalTrainTagRepository.saveAll(tagEntityList)
         }
 

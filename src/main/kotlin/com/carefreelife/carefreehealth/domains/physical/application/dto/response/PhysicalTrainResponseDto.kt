@@ -1,6 +1,6 @@
 package com.carefreelife.carefreehealth.domains.physical.application.dto.response
 
-import com.carefreelife.carefreehealth.domains.physical.application.dto.common.*
+import com.carefreelife.carefreehealth.domains.physical.domain.`object`.common.PhysicalTrainTag
 import java.time.ZonedDateTime
 
 data class PhysicalTrainResponseDto(
@@ -10,7 +10,7 @@ data class PhysicalTrainResponseDto(
     val motion: String,
     val effect: String,
     val caution: String,
-    val tags: List<PhysicalTrainCommonDto.PhysicalTrainTagDto>,
+    val tags: List<PhysicalTrainTag>,
     val created: ZonedDateTime,
     val updated: ZonedDateTime
 )

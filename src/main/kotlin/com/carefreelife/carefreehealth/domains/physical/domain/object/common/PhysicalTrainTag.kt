@@ -1,6 +1,6 @@
-package com.carefreelife.carefreehealth.domains.physical.domain.common
+package com.carefreelife.carefreehealth.domains.physical.domain.`object`.common
 
-enum class PhysicalTrainTags (val code: String, val description: String) {
+enum class PhysicalTrainTag (val code: String, val description: String) {
     // 대분류 (근력, 유산소, 유연성, 지구력)
     STRENGTH("STRENGTH", "근력 운동"),
     CARDIO("CARDIO", "유산소 운동"),
